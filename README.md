@@ -1,4 +1,4 @@
-# vue2x-demo
+# vue-vuex-vux-demo
 
 > A Vue.js project
 
