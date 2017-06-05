@@ -14,7 +14,7 @@ npm run dev
 # 项目打包
 npm run build
 
-# build for production and view the bundle analyzer report
+# 打包到生产环境
 npm run build --report
 ```
 
