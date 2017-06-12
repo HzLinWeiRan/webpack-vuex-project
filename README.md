@@ -39,3 +39,17 @@ npm run build
 # 本地打包压缩并查看项目
 npm run build --report
 ```
+## 反代理配置
+
+`/config/index.js`
+``` bash
+dev: {
+  proxyTable: {
+    '/api': {
+      target: 'http://jsonplaceholder.typicode.com/',
+      changeOrigin: true,
+      pathRewrite: {'^/api': ''}
+    }
+  }
+}
+```
