@@ -41,7 +41,8 @@ npm run build --report
 ```
 ## 反代理配置
 
-`/config/index.js`
+本地代码想要访问测试环境接口可以通过以下配置
+`/config/index.js` 
 ``` bash
 dev: {
   proxyTable: {
