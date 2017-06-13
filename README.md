@@ -115,7 +115,7 @@ module.exports = {
 
 ## 引入新的页面
 
-页面统一在`/src/pages`目录中添加
+页面统一在`/src/pages`目录中添加<br/>
 使用router按需加载在main.js添加相应page代码
 ``` bash
 {
@@ -128,7 +128,7 @@ module.exports = {
 
 ## 自定义模块组件
 
-自定义组件可在`/src/components/`目录开发
+页面和组件分开目录编写有益于代码维护，自定义组件或业务公共模块统一在`/src/components/`目录开发结构可与pages相同
 
 ## 开发所需技术
 
