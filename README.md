@@ -116,7 +116,8 @@ module.exports = {
 ## 引入新的页面
 
 页面统一在`/src/pages`目录中添加<br/>
-使用router按需加载在main.js添加相应page代码
+同事当项目无限大的时候通过router一次性加载全部的页面需要用户非常大耐心<br />
+所有我们在代码中统一使用router按需加载配置，在`main.js`添加page使用如下方式
 ``` bash
 {
   path: '/hello',
