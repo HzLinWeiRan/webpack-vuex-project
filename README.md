@@ -54,3 +54,59 @@ dev: {
   }
 }
 ```
+
+## 本地ajax mock 配置
+
+可以直接返回一段json例如
+`/mock/users/user.json` 
+
+``` bash
+{
+  "code|1": [0, 0, 0, 0, 1],
+  "data": {
+    "list|10": [
+      {
+        "id|+1": 1,
+        "name": "@name",
+        "age|20-30": 1,
+        "email": "@email",
+        "date": "@date"
+      }
+    ]
+  }
+}
+```
+
+也可以写业务代码自定义返回参数
+`/mock/users/user.js` 
+
+``` bash
+module.exports = function (req) {
+  var uid = req.query.uid;
+
+  if (!uid) {
+    return {
+      code: -1,
+      msg: 'no uid',
+    }
+  }
+
+  return {
+    code: 0,
+    data: {
+      "uid": +uid,
+      "name": "@name",
+      "age|20-30": 1,
+      "email": "@email",
+      "date": "@date",
+    },
+  };
+};
+```
+
+引入以上配置在`config/mock.js`文件中添加配置
+``` bash
+module.exports = {
+    'GET::/api/1.json': 'mock::/users/list.json',
+    'GET::/test/2.json': 'mock::/users/user.js',
+}
