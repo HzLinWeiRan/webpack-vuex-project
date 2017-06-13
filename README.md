@@ -134,7 +134,7 @@ module.exports = {
 
 * vue https://cn.vuejs.org/v2/api vue
 * vuex https://vuex.vuejs.org/zh-cn/ vue状态管理框架
-* vux https://vuex.vuejs.org/zh-cn/intro.html vue样式库
+* vux https://vux.li/#/ vue样式库
 * vue-router vue单页面开发框架
 * axios 
 * less 
