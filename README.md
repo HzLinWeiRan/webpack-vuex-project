@@ -110,3 +110,6 @@ module.exports = {
     'GET::/api/1.json': 'mock::/users/list.json',
     'GET::/test/2.json': 'mock::/users/user.js',
 }
+```
+注：数据mock优先级低于反代理配置同父级，目录会被覆盖
+
