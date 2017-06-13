@@ -113,3 +113,31 @@ module.exports = {
 ```
 注：数据mock优先级低于反代理配置同父级，目录会被覆盖
 
+## 引入新的页面
+
+页面统一在`/src/pages`目录中添加
+使用router按需加载在main.js添加相应page代码
+``` bash
+{
+  path: '/hello',
+  component: function(resolve){
+    require(['./pages/Hello'], resolve);
+  }
+}
+```
+
+## 自定义模块组件
+
+自定义组件可在`/src/components/`目录开发
+
+## 开发所需技术
+
+* vue https://cn.vuejs.org/v2/api vue
+* vuex https://vuex.vuejs.org/zh-cn/ vue状态管理框架
+* vux https://vuex.vuejs.org/zh-cn/intro.html vue样式库
+* vue-router vue单页面开发框架
+* axios 
+* less 
+
+...未完待续
+
