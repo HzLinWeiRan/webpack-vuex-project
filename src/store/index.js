@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import module from './modules/HelloFromVuxModule'
 import loadModule from './modules/LoadingModule'
+import userModule from './modules/userModule'
 import * as constants from './constants'
 import api from '@/fetch/api'
 
@@ -55,6 +56,7 @@ export default new Vuex.Store({
     },
     modules: {
         a: module,
-        loadModule: loadModule
+        loadModule: loadModule,
+        user: userModule,
     }
 });  

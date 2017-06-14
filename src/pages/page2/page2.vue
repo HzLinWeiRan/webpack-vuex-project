@@ -1,7 +1,8 @@
 <template>
-    <div class="red">
-        {{msg}}
-        <p class="yellow">123</p>
+    <div>
+        <group>
+            <cell v-for="user in users" :title="user.website" v-model:value="user.name" :key="user.id" is-link></cell>
+        </group>
     </div>
 </template>
 
@@ -15,13 +16,17 @@ export default {
     Cell
   },
   created: function(){
+    
     this.$store.dispatch('INIT_MSG')
-    console.log(this.$route)
+    console.log(this.$route.params.test)
+    console.log(this.$route.query.test)
+    this.$store.dispatch('USER_FETCH')
   },
   computed: {
     ...mapState({
       msg: state => state.msg,
-      a: state => state.a
+      a: state => state.a,
+      users: state => state.user.list
     })
   },
   methods: {
@@ -31,5 +36,5 @@ export default {
 </script>
 
 <style lang='less'>
-@import 'User.less';
+@import 'page2.less';
 </style>

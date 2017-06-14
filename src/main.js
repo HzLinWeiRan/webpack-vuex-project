@@ -6,8 +6,9 @@ import VueRouter from 'vue-router'
 import App from './App'
 import store from './store'
 import * as contants from './store/constants'
-import { AjaxPlugin } from 'vux'
-Vue.use(AjaxPlugin);
+import  { LoadingPlugin,AlertPlugin } from 'vux'
+Vue.use(LoadingPlugin)
+Vue.use(AlertPlugin)
 //import Hello from './components/Hello'
 
 Vue.use(VueRouter)
@@ -15,20 +16,20 @@ Vue.use(VueRouter)
 const routes = [{
     path: '/',
     component: function(resolve){
-        require(['./pages/HelloFromVux/'], resolve);
+        require(['./pages/homepage'], resolve);
     }
   },
   {
-    path: '/hello',
+    path: '/page1',
     component: function(resolve){
-      require(['./pages/Hello/'], resolve);
+      require(['./pages/page1'], resolve);
     }
   },
   {
-    path: '/user/:test',
+    path: '/page2/:test',
     name:"user",
     component: function(resolve){
-      require(['./pages/User/'], resolve);
+      require(['./pages/page2'], resolve);
     }
   }
   ]

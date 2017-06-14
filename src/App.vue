@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <mainfest title="appMainfest"></mainfest>
     <router-view></router-view>
     <loading v-model="isLoading"></loading>
   </div>
@@ -8,6 +9,7 @@
 <script>
 import {Loading} from 'vux'
 import {mapState} from 'vuex'
+import Mainfest from '@/components/mainfest/mainfest'
 
 export default {
   name: 'app',
@@ -17,7 +19,8 @@ export default {
     })
   },
   components: {
-    Loading
+    Loading,
+    Mainfest
   }
 }
 </script>

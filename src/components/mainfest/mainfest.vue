@@ -1,14 +1,15 @@
 <template>
-    <div class="test">
-        {{msg}}
-        <span>test</span>
+    <div>
+        <div class="mainfest">
+            {{title}}
+        </div>
     </div>
 </template>
 
 <script>
 export default {
     props: {
-        msg: {
+        title: {
             type: String,
             default: '123'
         }
@@ -17,5 +18,5 @@ export default {
 </script>
 
 <style lang="less">
-@import './a.less';
+@import './mainfest.less';
 </style>

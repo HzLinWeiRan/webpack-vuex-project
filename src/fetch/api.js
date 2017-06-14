@@ -29,7 +29,7 @@ export default {
     getUser(params) {
         return fetch({
             method: 'get',
-            url: '/users',
+            url: `/users`,
             params: params
         });
     }
