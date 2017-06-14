@@ -1,10 +1,10 @@
 import api from '../../fetch/api'
 
-const actions =  {
+const actions = {
 }
 
 const state = {
-    title: 'hello homepage'
+	title: 'hello homepage'
 }
 
 const mutations = {
@@ -12,7 +12,7 @@ const mutations = {
 
 
 export default {
-    state,
-    mutations,
-    actions
+	state,
+	mutations,
+	actions
 }

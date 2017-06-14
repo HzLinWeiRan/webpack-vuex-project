@@ -19,7 +19,7 @@ export default {
     
     console.log(this.$route.params.test)
     console.log(this.$route.query.test)
-    this.$store.dispatch('USER_FETCH')
+    this.$store.dispatch('USER_FETCH',this.$vux)
   },
   computed: {
     ...mapState({

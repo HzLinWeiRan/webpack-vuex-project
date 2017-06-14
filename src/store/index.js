@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import homepageModule from './modules/homepageModule'
-import loadModule from './modules/LoadingModule'
+import appModule from './modules/appModule'
 import userModule from './modules/userModule'
 import api from '@/fetch/api'
 
@@ -9,8 +9,8 @@ import api from '@/fetch/api'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-    state:{
-        msg:'test'
+    state: {
+        msg: 'test'
     },
     getters: {
     },
@@ -20,7 +20,7 @@ export default new Vuex.Store({
     },
     modules: {
         homepage: homepageModule,
-        loadModule: loadModule,
+        appModule: appModule,
         user: userModule,
     }
 });  

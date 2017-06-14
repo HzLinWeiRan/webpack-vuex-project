@@ -5,7 +5,7 @@ import FastClick from 'fastclick'
 import VueRouter from 'vue-router'
 import App from './App'
 import store from './store'
-import  { LoadingPlugin,AlertPlugin } from 'vux'
+import { LoadingPlugin, AlertPlugin } from 'vux'
 Vue.use(LoadingPlugin)
 Vue.use(AlertPlugin)
 //import Hello from './components/Hello'
@@ -13,25 +13,25 @@ Vue.use(AlertPlugin)
 Vue.use(VueRouter)
 
 const routes = [{
-    path: '/',
-    component: function(resolve){
-        require(['./pages/homepage'], resolve);
-    }
-  },
-  {
-    path: '/page1',
-    component: function(resolve){
-      require(['./pages/page1'], resolve);
-    }
-  },
-  {
-    path: '/page2/:test',
-    name:"user",
-    component: function(resolve){
-      require(['./pages/page2'], resolve);
-    }
+  path: '/',
+  component: function (resolve) {
+    require(['./pages/homepage'], resolve);
   }
-  ]
+},
+{
+  path: '/page1',
+  component: function (resolve) {
+    require(['./pages/page1'], resolve);
+  }
+},
+{
+  path: '/page2/:test',
+  name: "user",
+  component: function (resolve) {
+    require(['./pages/page2'], resolve);
+  }
+}
+]
 
 const router = new VueRouter({
   routes
@@ -50,18 +50,20 @@ new Vue({
 }).$mount('#app-box')
 
 
-router.beforeEach(function(to, from, next){
-  store.commit('LOAD_ACTION', {isLoading: true})
+router.beforeEach(function (to, from, next) {
+  store.commit('LOAD_ACTION', { isLoading: true })
   next();
 })
 
 router.afterEach(function (to) {
-  var title;
-  if(to.path == "/") {
-    title = "首页"
+  var params = {};
+  if (to.path == "/") {
+    params.title = "首页";
+    params.isHomePage = true;
   } else {
-    title = "子页面"
+    params.title = "子页面";
+    params.isHomePage = false;
   }
-  store.commit('UPDATE_TITLE', title)
-  store.commit('LOAD_ACTION', {isLoading: false})
+  store.commit('UPDATE_TITLE', params)
+  store.commit('LOAD_ACTION', { isLoading: false })
 })

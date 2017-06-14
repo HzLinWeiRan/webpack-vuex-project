@@ -1,12 +1,12 @@
 <template>
     <div id="app">
+        <x-header :left-options="{showBack: !isHomePage}">
+            {{title}}
+        </x-header>
         <transition name="move" mode="out-in" appear>
-            <x-header>
-                {{title}}
-            </x-header>
-        </transition>
-        <transition name="move" mode="out-in" appear>
-            <router-view></router-view>
+            <keep-alive>
+                <router-view>11111111111111111</router-view>
+            </keep-alive>
         </transition>
         <loading v-model="isLoading"></loading>
     </div>
@@ -20,8 +20,9 @@ export default {
   name: 'app',
   computed: {
     ...mapState({
-      isLoading: state => state.loadModule.isLoading,
-      title: state => state.loadModule.title
+      isLoading: state => state.appModule.isLoading,
+      title: state => state.appModule.title,
+      isHomePage: state => state.appModule.isHomePage
     })
   },
   components: {
