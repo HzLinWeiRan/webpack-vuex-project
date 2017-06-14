@@ -1,34 +1,38 @@
 <template>
-  <div id="app">
-    <mainfest title="appMainfest"></mainfest>
-    <router-view></router-view>
-    <loading v-model="isLoading"></loading>
-  </div>
+    <div id="app">
+        <transition name="move" mode="out-in" appear>
+            <x-header>
+                {{title}}
+            </x-header>
+        </transition>
+        <transition name="move" mode="out-in" appear>
+            <router-view></router-view>
+        </transition>
+        <loading v-model="isLoading"></loading>
+    </div>
 </template>
 
 <script>
-import {Loading} from 'vux'
+import {Loading,XHeader} from 'vux'
 import {mapState} from 'vuex'
-import Mainfest from '@/components/mainfest/mainfest'
 
 export default {
   name: 'app',
   computed: {
     ...mapState({
-      isLoading: state => state.loadModule.isLoading
+      isLoading: state => state.loadModule.isLoading,
+      title: state => state.loadModule.title
     })
   },
   components: {
     Loading,
-    Mainfest
+    XHeader
   }
 }
 </script>
 
 <style lang="less">
 @import '~vux/src/styles/reset.less';
+@import './App.less';
 
-body {
-  background-color: #fbf9fe;
-}
 </style>

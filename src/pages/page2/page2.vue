@@ -17,7 +17,6 @@ export default {
   },
   created: function(){
     
-    this.$store.dispatch('INIT_MSG')
     console.log(this.$route.params.test)
     console.log(this.$route.query.test)
     this.$store.dispatch('USER_FETCH')

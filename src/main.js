@@ -5,7 +5,6 @@ import FastClick from 'fastclick'
 import VueRouter from 'vue-router'
 import App from './App'
 import store from './store'
-import * as contants from './store/constants'
 import  { LoadingPlugin,AlertPlugin } from 'vux'
 Vue.use(LoadingPlugin)
 Vue.use(AlertPlugin)
@@ -52,10 +51,17 @@ new Vue({
 
 
 router.beforeEach(function(to, from, next){
-  store.commit(contants['LOAD_ACTION'], {isLoading: true})
+  store.commit('LOAD_ACTION', {isLoading: true})
   next();
 })
 
 router.afterEach(function (to) {
-  store.commit(contants['LOAD_ACTION'], {isLoading: false})
+  var title;
+  if(to.path == "/") {
+    title = "首页"
+  } else {
+    title = "子页面"
+  }
+  store.commit('UPDATE_TITLE', title)
+  store.commit('LOAD_ACTION', {isLoading: false})
 })

@@ -1,8 +1,19 @@
 <template>
   <div class="hello">
     页面自定义公共标题
-    <Mainfest title="pageMainfest"/>
-    page content
+    <mainfest>
+        <span>title</span>
+    </mainfest>
+    没参数时
+    <mainfest/>
+    keepAlive component demo 
+    <keep-alive>
+        <component :is="currentView">
+            component
+        </component>
+    </keep-alive>
+    transition demo
+    
   </div>
 </template>
 
@@ -15,7 +26,13 @@ export default {
   },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      currentView: 'Mainfest',
+      show: true
+    }
+  },
+  methods: {
+    hide:function(){
+      this.show= false;
     }
   }
 }
@@ -40,4 +57,5 @@ li {
 a {
   color: #42b983;
 }
+
 </style>

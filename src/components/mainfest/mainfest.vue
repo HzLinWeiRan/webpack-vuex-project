@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="mainfest">
-            {{title}}
+            <slot>no-title</slot>
         </div>
     </div>
 </template>
@@ -9,10 +9,7 @@
 <script>
 export default {
     props: {
-        title: {
-            type: String,
-            default: '123'
-        }
+        title: String
     }
 }
 </script>

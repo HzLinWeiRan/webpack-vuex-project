@@ -1,12 +1,14 @@
-import * as constants from '../constants'
-
 export default {
     state: {
-        isLoading: false
+        isLoading: false,
+        title: ""
     },
     mutations: {
-        [constants['LOAD_ACTION']](state,{isLoading}){
+        'LOAD_ACTION'(state,{isLoading}){
             state.isLoading = isLoading;
+        },
+        'UPDATE_TITLE'(state,title){
+            state.title = title;
         }
     }
 }
