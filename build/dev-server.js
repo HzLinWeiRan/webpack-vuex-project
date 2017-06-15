@@ -12,6 +12,7 @@ var webpack = require('webpack')
 var proxyMiddleware = require('http-proxy-middleware')
 var mockMiddleware = require('mock-middlewares')
 var webpackConfig = require('./webpack.dev.conf')
+var c = require('child_process')
 
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
@@ -92,7 +93,9 @@ app.use(mockMiddleware({
   routeFile: '../config/mock.js'
 }))
 
-var server = app.listen(port)
+var server = app.listen(port, function() {
+  c.exec('start ' + uri);
+})
 
 module.exports = {
   ready: readyPromise,
