@@ -1,11 +1,10 @@
 <template>
     <div id="app">
-        <x-header :left-options="{showBack: !isHomePage}">
-            {{title}}
+        <x-header :left-options="{showBack: !isHomePage}" transition="move" :title="title">
         </x-header>
-        <transition name="move" mode="out-in" appear>
+        <transition name="move" >
             <keep-alive>
-                <router-view>11111111111111111</router-view>
+                <router-view></router-view>
             </keep-alive>
         </transition>
         <loading v-model="isLoading"></loading>

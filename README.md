@@ -138,7 +138,18 @@ module.exports = {
 * vux https://vux.li/#/ vue样式库
 * vue-router vue单页面开发框架
 * axios 
-* less 
+* less
 
-...未完待续
+## 页面切换动画
+
+`/src/App.vue`
+
+```bash
+<transition name="move" >
+    <router-view></router-view>
+</transition>
+```
+name值 fade bounce move
+
+
 
