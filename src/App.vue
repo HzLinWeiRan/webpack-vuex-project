@@ -1,11 +1,9 @@
 <template>
     <div id="app">
-        <x-header :left-options="{showBack: !isHomePage}" transition="move" :title="title">
+        <x-header :left-options="{showBack: !isHomePage}" v-show="!isHomePage" transition="move" :title="title">
         </x-header>
         <transition name="move" >
-            <keep-alive>
-                <router-view></router-view>
-            </keep-alive>
+          <router-view></router-view>
         </transition>
         <loading v-model="isLoading"></loading>
     </div>
@@ -17,6 +15,9 @@ import {mapState} from 'vuex'
 
 export default {
   name: 'app',
+  beforeCreate: function() {
+    this.$store.commit('INIT_STATUS');
+  },
   computed: {
     ...mapState({
       isLoading: state => state.appModule.isLoading,
@@ -31,8 +32,8 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" >
 @import '~vux/src/styles/reset.less';
-@import './App.less';
+@import './styles/App.less';
 
 </style>

@@ -34,6 +34,6 @@ export default {
 }
 </script>
 
-<style lang='less'>
+<style lang='less' scoped>
 @import 'page2.less';
 </style>

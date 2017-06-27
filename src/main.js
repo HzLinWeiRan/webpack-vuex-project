@@ -5,11 +5,12 @@ import FastClick from 'fastclick'
 import VueRouter from 'vue-router'
 import App from './App'
 import store from './store'
+import VueI18n from 'vue-i18n'
 import { LoadingPlugin, AlertPlugin } from 'vux'
 Vue.use(LoadingPlugin)
 Vue.use(AlertPlugin)
 //import Hello from './components/Hello'
-
+Vue.use(VueI18n)
 Vue.use(VueRouter)
 
 const routes = [{
@@ -42,8 +43,22 @@ FastClick.attach(document.body)
 
 Vue.config.productionTip = false
 
+var messages = {
+  "zh": require('./i18n/zh.js'),
+  "en": require('./i18n/en.js')
+} 
+
+// Create VueI18n instance with options
+const i18n = new VueI18n({
+  locale: 'zh', // set locale
+  messages // set locale messages
+})
+
+
+  //i18n,
 /* eslint-disable no-new */
 new Vue({
+  i18n,
   store,
   router,
   render: h => h(App)
@@ -51,12 +66,20 @@ new Vue({
 
 
 router.beforeEach(function (to, from, next) {
-  store.commit('LOAD_ACTION', { isLoading: true })
-  next();
+  
+  if (to.path != "/" && !sessionStorage.userName) {
+    router.push("/");
+    return;
+  } else {
+    store.commit('LOAD_ACTION', { isLoading: true })
+    next();
+  }
+
 })
 
 router.afterEach(function (to) {
   var params = {};
+
   if (to.path == "/") {
     params.title = "首页";
     params.isHomePage = true;
