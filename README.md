@@ -145,7 +145,8 @@ module.exports = {
 项目已添加国际支持 <br/>
 详细情况 http://kazupon.github.io/vue-i18n/en/ 
 
-## vux ui库主题颜色修改 `src/styles/theme.less`
+## vux ui库主题颜色修改 
+`src/styles/theme.less`
 
 ``` bash
 
