@@ -1,6 +1,6 @@
 # webpack-vuex-project
 
-> A Vue.js project 基于cli按个人需求进行优化，满足基本前端开发
+> A Vue.js project 基于cli按个人需求进行优化，满足基本前端开发 简单实例 http://106.14.185.90/#/
 
 ## 项目结构 ##
 
