@@ -6,9 +6,10 @@ import VueRouter from 'vue-router'
 import App from './App'
 import store from './store'
 import VueI18n from 'vue-i18n'
-import { LoadingPlugin, AlertPlugin } from 'vux'
+import { LoadingPlugin, AlertPlugin, LocalePlugin} from 'vux'
 Vue.use(LoadingPlugin)
 Vue.use(AlertPlugin)
+Vue.use(LocalePlugin)
 //import Hello from './components/Hello'
 Vue.use(VueI18n)
 Vue.use(VueRouter)
@@ -44,13 +45,16 @@ FastClick.attach(document.body)
 Vue.config.productionTip = false
 
 var messages = {
-  "zh": require('./i18n/zh.js'),
+  "zh-CN": require('./i18n/zh-CN.js'),
   "en": require('./i18n/en.js')
 } 
 
+localStorage.locale || (localStorage.locale = Vue.locale.get());
+
 // Create VueI18n instance with options
 const i18n = new VueI18n({
-  locale: 'zh', // set locale
+  locale: localStorage.locale, // set locale
+  fallbackLocale: "zh-CN",
   messages // set locale messages
 })
 
@@ -81,10 +85,10 @@ router.afterEach(function (to) {
   var params = {};
 
   if (to.path == "/") {
-    params.title = "首页";
+    params.title = "homepage";
     params.isHomePage = true;
   } else {
-    params.title = "子页面";
+    params.title = to.path.split('/')[1];
     params.isHomePage = false;
   }
   store.commit('UPDATE_TITLE', params)

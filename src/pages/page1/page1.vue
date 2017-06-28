@@ -5,7 +5,7 @@
         <span>title</span>
     </mainfest>
     没参数时
-    <mainfest/>
+    <mainfest></mainfest>
     keepAlive component demo 
     <keep-alive>
         <component :is="currentView">

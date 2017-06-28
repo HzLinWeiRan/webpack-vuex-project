@@ -1,7 +1,7 @@
 <template>
     <div>
         <group>
-            <cell v-for="user in users" :title="user.website" v-model:value="user.name" :key="user.id" is-link></cell>
+            <cell v-for="user in users" :title="user.website" v-model="user.name" :key="user.id" is-link></cell>
         </group>
     </div>
 </template>
@@ -16,7 +16,6 @@ export default {
     Cell
   },
   created: function(){
-    
     console.log(this.$route.params.test)
     console.log(this.$route.query.test)
     this.$store.dispatch('USER_FETCH',this.$vux)

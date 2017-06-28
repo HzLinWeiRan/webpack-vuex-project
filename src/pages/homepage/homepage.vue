@@ -2,16 +2,15 @@
   <div>
     <div class="vux-demo">
       <img  class="logo" src="../../assets/vux_logo.png">
-      <h1>{{homepage.title}}</h1>
       <h1>{{ $t("hello world") }}</h1>
     </div>
     <group title="pages" >
-      <cell title="page1" value='page1' link='page1' is-link></cell>
-      <cell title="page2" value='page2' link='page2/1?test=2' is-link></cell>
+      <cell :title='$t("page1")' :value='$t("page1")' link='page1' is-link></cell>
+      <cell :title='$t("page2")' :value='$t("page2")' link='page2/1?test=2' is-link></cell>
     </group>
     <box gap="10px 10px">
-      <x-button type="primary" v-show="!userName" action-type="button" @click.native="loginClick">登录</x-button>
-      <x-button type="primary" v-show="userName" action-type="button" @click.native="loginOutClick">退出</x-button>
+      <x-button type="primary" v-if="!userName" action-type="button" @click.native="loginClick">{{$t('login')}}</x-button>
+      <x-button type="primary" v-else action-type="button" @click.native="loginOutClick">{{$t('logout')}}</x-button>
     </box>
   </div>
 </template>
