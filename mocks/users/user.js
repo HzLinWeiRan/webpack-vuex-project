@@ -1,6 +1,5 @@
 module.exports = function (req) {
   var uid = req.query.uid;
-
   if (!uid) {
     return {
       code: -1,
