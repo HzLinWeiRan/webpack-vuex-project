@@ -1,6 +1,6 @@
 # webpack-vuex-project
 
-> A Vue.js project 基于cli按个人需求进行优化，满足基本前端开发
+> A Vue.js project 基于cli按个人需求进行优化，满足基本前端开发 简单实例 http://106.14.185.90/#/
 
 ## 项目结构 ##
 
@@ -139,6 +139,22 @@ module.exports = {
 * vue-router vue单页面开发框架
 * axios 
 * less
+
+## vue-i18n国际化
+
+项目已添加国际支持 <br/>
+详细情况 http://kazupon.github.io/vue-i18n/en/ 
+
+## vux ui库主题颜色修改 
+`src/styles/theme.less`
+
+``` bash
+
+@button-primary-bg-color: #ea2f2f;
+@button-primary-active-bg-color: #da2f2f;
+
+```
+
 
 ## 页面切换动画
 
