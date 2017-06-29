@@ -1,6 +1,5 @@
 var fs = require('fs');
 var path = require('path');
-var replacestream = require('replacestream');
 //fs.readFileSync('../src/')
 
 var remain = process.argv.slice(2);
