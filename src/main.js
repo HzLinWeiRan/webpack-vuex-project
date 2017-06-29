@@ -14,31 +14,11 @@ Vue.use(LocalePlugin)
 Vue.use(VueI18n)
 Vue.use(VueRouter)
 
-const routes = [{
-  path: '/',
-  component: function (resolve) {
-    require(['./pages/homepage'], resolve);
-  }
-},
-{
-  path: '/page1',
-  component: function (resolve) {
-    require(['./pages/page1'], resolve);
-  }
-},
-{
-  path: '/page2/:test',
-  name: "user",
-  component: function (resolve) {
-    require(['./pages/page2'], resolve);
-  }
-}
-]
+const routes = require('./routes')
 
 const router = new VueRouter({
   routes
 })
-
 
 FastClick.attach(document.body)
 
