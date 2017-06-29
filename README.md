@@ -38,6 +38,12 @@ npm run build
 
 # 本地打包压缩并查看项目
 npm run build --report
+
+# 生成page文件
+npm run init page `name`
+
+# 生成component文件
+npm run init component `name`
 ```
 ## 反代理配置
 
@@ -117,7 +123,7 @@ module.exports = {
 
 页面统一在`/src/pages`目录中添加<br/>
 同事当项目无限大的时候通过router一次性加载全部的页面需要用户非常大耐心<br />
-所有我们在代码中统一使用router按需加载配置，在`main.js`添加page使用如下方式
+所有我们在代码中统一使用router按需加载配置，在`routes.js`添加page使用如下方式
 ``` bash
 {
   path: '/hello',
@@ -126,6 +132,7 @@ module.exports = {
   }
 }
 ```
+命令生成page，routes会自动加入该配置
 
 ## 自定义模块组件
 
