@@ -1,5 +1,5 @@
 module.exports = [{
-	path: "/homepage",
+	path: "/",
 	name: "homepage",
 	component: function (resolve) {
   	require(['./pages/homepage'], resolve);
