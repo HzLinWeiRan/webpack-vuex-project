@@ -1,26 +1,22 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import homepageModule from './modules/homepageModule'
-import appModule from './modules/appModule'
-import userModule from './modules/userModule'
-import api from '@/fetch/api'
-
+import * as getters from './getters'
+import * as actions from './actions'
+import mutations from './mutations'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        msg: 'test'
+        msg: 'test',
+        radio: '2'
     },
-    getters: {
-    },
-    mutations: {
-    },
-    actions: {
-    },
-    modules: {
-        homepage: homepageModule,
-        appModule: appModule,
-        user: userModule,
-    }
-});  
+    getters,
+    mutations,
+    actions,
+    plugins: [(store) => {
+        store.subscribe((mutation, state) => {
+            console.log('plugin')
+        })
+    }]
+})

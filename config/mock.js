@@ -1,4 +1,4 @@
 module.exports = {
-    'GET::/api/1.json': 'mock::/users/list.json',
-    'GET::/test/2.json': 'mock::/users/user.js'
-}
+    // 发送登录验证码
+    'POST::/web/session/getVcode.json': 'mock::/web/session/getVcode.json'
+  }

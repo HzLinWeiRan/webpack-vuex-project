@@ -1,19 +1,53 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 var path = require('path')
 
+function restream(proxyReq, req, res, options) {
+  if (req.body) {
+    let bodyData = ''
+    for (var key in req.body) {
+      bodyData != '' && (bodyData += '&');
+      bodyData += key + '=' + req.body[key];
+    }
+    // incase if content-type is application/x-www-form-urlencoded -> we need to change to application/json
+    //proxyReq.setHeader('Content-Type','application/json');
+    //proxyReq.setHeader('http-x-requested-with','XMLHttpRequest');
+    // roxyReq.setHeader('Content-Type','application/x-www-form-urlencoded');
+    proxyReq.setHeader('Content-Length', Buffer.byteLength(bodyData));
+    // stream the content
+    proxyReq.write(bodyData);
+  }
+}
+var proxyTable = {}
+for (var i = 0; i < process.argv.length; i++) {
+  var el = process.argv[i].trim()
+  if (el === 'proxy') {
+    proxyTable = {
+      '/web': {
+        // target: 'http://meng.dm.com/',  
+        target: 'http://192.168.51.108:8097/',     
+        changeOrigin: true,
+        // pathRewrite: {'^/web': '/web'},
+        secure: false,
+        onProxyReq: restream
+      }
+    }
+    break;
+  }
+  
+}
 module.exports = {
   build: {
     env: require('./prod.env'),
     index: path.resolve(__dirname, '../dist/index.html'),
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
-    productionSourceMap: true,
+    assetsPublicPath: './',
+    productionSourceMap: false,
     // Gzip off by default as many popular static hosts such as
     // Surge or Netlify already gzip all static assets for you.
     // Before setting to `true`, make sure to:
     // npm install --save-dev compression-webpack-plugin
-    productionGzip: false,
+    productionGzip: true,
     productionGzipExtensions: ['js', 'css'],
     // Run the build command with an extra argument to
     // View the bundle analyzer report after build finishes:
@@ -27,13 +61,7 @@ module.exports = {
     autoOpenBrowser: false,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {
-      '/api': {
-        target: 'http://jsonplaceholder.typicode.com/',
-        changeOrigin: true,
-        pathRewrite: {'^/api': ''}
-      }
-    },
+    proxyTable: proxyTable,
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)

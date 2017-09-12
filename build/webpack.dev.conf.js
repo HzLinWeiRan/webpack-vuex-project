@@ -28,7 +28,11 @@ module.exports = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
-      inject: true
+      inject: true,
+      static: './static/',
+      baseUrl: '/',
+      title: '游戏猫·喵盟',
+      suffix: '.json'
     }),
     new FriendlyErrorsPlugin()
   ]

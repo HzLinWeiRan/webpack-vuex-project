@@ -10,6 +10,26 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
 var env = config.build.env
+// 默认开发环境
+var publicPath = 'http://static-meng.dm.com/dist/'
+for (var i = 0; i < process.argv.length; i++) {
+  var el = process.argv[i].trim()
+  // 测试环境
+  if (el === 'test') {
+    publicPath = 'http://static-meng.dm.com/dist/'
+    break;
+  }
+  // 预发环境
+  if (el === 'pre') {
+    publicPath = 'http://static-meng.dm.com/dist/'
+    break;
+  }
+  // 正式环境
+  if (el === 'prod') {
+    publicPath = 'http://static-meng.dm.com/dist/'
+    break;
+  }
+}
 
 var webpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -18,10 +38,12 @@ var webpackConfig = merge(baseWebpackConfig, {
       extract: true
     })
   },
-  devtool: config.build.productionSourceMap ? '#source-map' : false,
+  // devtool: config.build.productionSourceMap ? '#cheap-module-source-map' : false,
   output: {
     path: config.build.assetsRoot,
-    filename: utils.assetsPath('js/[name].[chunkhash].js'),
+    publicPath: publicPath,
+    // http://static-meng.dm.com/dist/
+    filename: utils.assetsPath('js/[name].js'),
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
   plugins: [
@@ -29,15 +51,16 @@ var webpackConfig = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': env
     }),
+    
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
       },
-      sourceMap: true
+      minimize: true
     }),
     // extract css into its own file
     new ExtractTextPlugin({
-      filename: utils.assetsPath('css/[name].[contenthash].css')
+      filename: utils.assetsPath('css/[name].css')
     }),
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
@@ -61,7 +84,10 @@ var webpackConfig = merge(baseWebpackConfig, {
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-      chunksSortMode: 'dependency'
+      chunksSortMode: 'dependency',
+      baseUrl: "${baseUrl}",
+      static: './static/',
+      title: "游戏猫·喵盟"
     }),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({

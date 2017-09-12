@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-    <title>webpack-vue-project</title>
-  </head>
-  <body>
+    <title>${htmlWebpackPlugin.options.title}</title>
+    <link rel="Shortcut Icon" href="${htmlWebpackPlugin.options.static}favicon.ico">
+    <script>
+        window.baseUrl = '${htmlWebpackPlugin.options.baseUrl}';
+        window.suffix = '${htmlWebpackPlugin.options.suffix}';
+        (function(w) {
+            const c = document.documentElement.getBoundingClientRect()
+            let cw
+            if(c.width > w) {
+                cw = w
+            } else {
+                cw = c.width
+            }
+            document.documentElement.style.fontSize = cw / w * 100 + "px"
+        }(750))
+    </script>
+</head>
+<body>
+    <%=htmlWebpackPlugin.files.webpackManifest%>
     <div id="app-box"></div>
     <!-- built files will be auto injected -->
-  </body>
+</body>
 </html>

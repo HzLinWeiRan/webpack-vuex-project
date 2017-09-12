@@ -1,87 +1,49 @@
-
 body {
-  background-color: #fbf9fe;
+    background-color: #fff;
+    margin: 0px;
+    padding: 0px;
 }
 
-.fade-enter-active{
-  animation: fade-in 0.5s;
+html,
+body {
+    height: 100%;
 }
-.fade-leave-active {
-  animation: fade-out 0.5s;
-}
-@keyframes fade-in{
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+body {
+    max-width: 7.5rem;
+    margin: auto;
 }
 
-@keyframes fade-out{
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+body,
+button,
+input,
+select,
+textarea,
+{
+    font: 12px/1.5 tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
+    color: #333333;
 }
 
-.bounce-enter-active {
-  animation: bounce-in 0.5s;
+a {
+    text-decoration: transparent;
+    cursor: pointer;
 }
 
-.bounce-leave-active {
-  animation: bounce-out 0.5s;
+ul,
+li,
+dl,
+dd,
+dt,
+p,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5 {
+    padding: 0;
+    margin: 0;
 }
 
-@keyframes bounce-in {
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    transform: scale(1.5);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-@keyframes bounce-out {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.5);
-  }
-  100% {
-    transform: scale(0);
-  }
-}
-
-.move-enter-active{
-  animation: move-in 0.5s;
-  width: 100%;
-  position: fixed;
-}
-.move-leave-active {
-  animation: move-out 0.5s;
-  width: 100%;
-  position: fixed;
-}
-
-@keyframes move-in {
-  0% {
-    left: -100%;
-  }
-  100% {
-    left: 0%;
-  }
-}
-@keyframes move-out {
-  0% {
-    left: 0%;
-  }
-  100% {
-    left: 100%;
-  }
+li {
+    list-style-type: none;
 }

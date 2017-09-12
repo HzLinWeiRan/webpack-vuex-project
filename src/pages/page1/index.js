@@ -1,1 +1,0 @@
-module.exports = require('./page1.vue')
